@@ -4,7 +4,7 @@ A parametric cable organizer designed in OpenSCAD for 3D printing.
 
 ## Description
 
-Cable Archive is a modular insert that can be installed in drawers or containers to organize all types of cables. The design consists of an L-shaped plastic piece with specialized slots for cable management.
+Cable Archive is a modular insert that can be installed in drawers or containers to organize all types of cables. The design consists of a flat panel with perimeter walls and specialized slots for cable management.
 
 ### Features
 
