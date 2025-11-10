@@ -38,7 +38,8 @@ $fn = 50;
 slot_length = panel_height - 2*slot_margin_horizontal - entry_diameter/2 - slot_width/2;
 cross_width_horizontal = panel_width - 2*cross_margin_height;
 cross_width_vertical = panel_height - 2*cross_margin_width;
-num_perpendicular_slots = floor(slot_length / perpendicular_slot_spacing);
+available_space_for_perpendicular = slot_length - (entry_diameter/2 + perpendicular_slot_spacing/2);
+num_perpendicular_slots = floor(available_space_for_perpendicular / perpendicular_slot_spacing) + 1;
 
 // === MODULES ===
 
@@ -111,8 +112,8 @@ module perpendicular_slot_full() {
 
 module all_perpendicular_slots() {
     if (enable_perpendicular_slots && num_perpendicular_slots > 0) {
-        for (i = [1:num_perpendicular_slots]) {
-            x_pos = i * perpendicular_slot_spacing;
+        for (i = [0:num_perpendicular_slots-1]) {
+            x_pos = slot_length - i * perpendicular_slot_spacing;
             
             translate([x_pos, 0, 0])
                 perpendicular_slot_full();
