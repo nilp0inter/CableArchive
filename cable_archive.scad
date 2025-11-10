@@ -21,6 +21,7 @@ slot_margin_vertical = 10;
 enable_perpendicular_slots = true;
 perpendicular_slot_spacing = 25;
 perpendicular_slot_end_radius = 3;
+perpendicular_slot_margin = 5;
 
 /* [Base Walls Configuration] */
 wall_height = 20;
@@ -94,8 +95,8 @@ module cable_slot() {
 }
 
 module perpendicular_slot_full() {
-    available_height_above = panel_width/2 - slot_margin_vertical;
-    available_height_below = panel_width/2 - slot_margin_vertical;
+    available_height_above = panel_width/2 - perpendicular_slot_margin;
+    available_height_below = panel_width/2 - perpendicular_slot_margin;
     total_length = available_height_above + available_height_below;
     
     union() {
