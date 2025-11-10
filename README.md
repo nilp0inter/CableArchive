@@ -1,30 +1,93 @@
 # Cable Archive
 
-Un organizador de cables paramétrico diseñado en OpenSCAD.
+A parametric cable organizer designed in OpenSCAD for 3D printing.
 
-## Descripción
+## Description
 
-Cable Archive es un inserto modular que se puede instalar en cajones o recipientes para organizar cables de todo tipo. El diseño consiste en una pieza de plástico en forma de L con ranuras especializadas.
+Cable Archive is a modular insert that can be installed in drawers or containers to organize all types of cables. The design consists of an L-shaped plastic piece with specialized slots for cable management.
 
-### Características
+### Features
 
-- **Ranura optimizada**: Permite el paso del cable pero retiene los conectores
-- **Entrada ensanchada**: Facilita la inserción inicial del cable
-- **Almacenamiento visible**: Ambos conectores quedan visibles simultáneamente
-- **Extracción sencilla**: Se extrae tirando de los conectores
-- **Totalmente paramétrico**: Personalizable según tus necesidades
+- **Main cable slot**: Allows the cable to pass through while retaining the connectors
+- **Wide entry point**: Circular opening (25mm diameter) facilitates initial cable insertion
+- **Perpendicular slots**: Multiple cross-slots for securing cables at various points
+- **Visible storage**: Both connectors remain visible simultaneously
+- **Easy extraction**: Simply pull the connectors to remove cables
+- **Modular design**: Multiple inserts can be stacked to cover entire drawers
+- **Cross-shaped cutout**: Base walls have cutouts for easy material access and stacking
+- **Fully parametric**: Customizable to your specific needs
 
-## Uso
+## Design Components
 
-1. Abrir `cable_archive.scad` en OpenSCAD
-2. Ajustar los parámetros según necesidades
-3. Renderizar (F6)
-4. Exportar a STL para impresión 3D
+### Panel
+- Flat top panel with main cable slot
+- Default dimensions: 310mm × 60mm × 3mm (height × width × thickness)
 
-## Parámetros personalizables
+### Base Walls
+- Vertical walls around the perimeter (default 20mm height, 2mm thickness)
+- Cross-shaped cutout pattern for material reduction and stackability
 
-Ver `cable_archive.scad` para la lista completa de parámetros.
+### Main Slot
+- Circular entry (25mm diameter) for easy cable insertion
+- Narrow channel (3mm wide) to retain connectors
+- Optional rounded end for smooth cable routing
+- Customizable margins and positioning
 
-## Licencia
+### Perpendicular Slots
+- Multiple slots perpendicular to the main slot
+- Automatically calculated spacing (default 25mm)
+- Rounded ends (3mm radius) for gentle cable guidance
+- Can be enabled/disabled independently
 
-[Especificar licencia]
+## Usage
+
+1. Open `cable_archive.scad` in OpenSCAD
+2. Adjust parameters in the Customizer panel (Window > Customizer)
+3. Press F5 for preview or F6 for full render
+4. Export to STL: File > Export > Export as STL
+5. 3D print with your preferred settings
+
+## Customizable Parameters
+
+### Panel Dimensions
+- `panel_width`: Width of the panel (default: 60mm)
+- `panel_height`: Height/length of the panel (default: 310mm)
+- `panel_thickness`: Thickness of the top panel (default: 3mm)
+
+### Main Slot Configuration
+- `enable_main_slot`: Toggle main cable slot on/off (default: true)
+- `slot_width`: Width of the cable channel (default: 3mm)
+- `entry_diameter`: Diameter of the entry hole (default: 25mm)
+- `end_rounding`: Round the slot end (default: true)
+- `slot_margin_horizontal`: Margin from panel edge (default: 10mm)
+- `slot_margin_vertical`: Vertical position margin (default: 10mm)
+
+### Perpendicular Slots Configuration
+- `enable_perpendicular_slots`: Toggle perpendicular slots on/off (default: true)
+- `perpendicular_slot_spacing`: Distance between slots (default: 25mm)
+- `perpendicular_slot_end_radius`: Radius of slot ends (default: 3mm)
+- `perpendicular_slot_margin`: Margin from panel edges (default: 5mm)
+
+### Base Walls Configuration
+- `wall_height`: Height of perimeter walls (default: 20mm)
+- `wall_thickness`: Thickness of the walls (default: 2mm)
+
+### Cross Cutout Configuration
+- `cross_margin_width`: Horizontal margin for cutout (default: 5mm)
+- `cross_margin_height`: Vertical margin for cutout (default: 5mm)
+- `cross_margin_top`: Top margin to preserve (default: 2mm)
+
+### Rendering Quality
+- `$fn`: Circle resolution (default: 50)
+
+## Printing Recommendations
+
+- **Layer height**: 0.2mm recommended
+- **Infill**: 15-20% is sufficient
+- **Supports**: Not required with proper orientation
+- **Orientation**: Print with the panel facing up
+- **Material**: PLA, PETG, or ABS work well
+
+## License
+
+Creative Commons
