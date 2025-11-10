@@ -1,65 +1,59 @@
 // Cable Archive - Organizador paramétrico de cables
 // ================================================
+// Diseño modular: cada inserto puede apilarse con otros para cubrir cajones completos
 
-// === PARÁMETROS PRINCIPALES ===
+// === PARÁMETROS DEL INSERTO ===
 
-// Dimensiones de la base (parte horizontal de la L)
-base_length = 100;      
-base_width = 30;        
-base_height = 3;        
+// Dimensiones del panel (donde se sitúa la ranura)
+panel_width = 50;       
+panel_height = 30;
+panel_thickness = 3;
 
-// Dimensiones de la pared (parte vertical de la L)
-wall_height = 50;       
-wall_thickness = 3;     
+// Márgenes de la ranura respecto a los bordes del panel
+margin_horizontal = 5;
+margin_vertical = 5;
 
-// Parámetros de la ranura para cables
-slot_width = 3;         
-slot_depth = 2;         
-slot_length = 40;       
+// Parámetros de la ranura para cables (forma de chupa-chups)
+slot_width = 3;
+entry_diameter = 15;
+end_rounding = true;
 
-// Entrada ensanchada
-entry_width = 15;       
-entry_length = 10;      
+// Dimensiones calculadas
+slot_length = panel_width - 2*margin_horizontal - entry_diameter/2 - slot_width/2;
 
-// Número de ranuras
-num_slots = 5;          
-slot_spacing = 15;      
+$fn = 50;      
 
 // === MÓDULOS ===
 
-module l_shape() {
-    union() {
-        cube([base_length, base_width, base_height]);
-        
-        translate([0, base_width - wall_thickness, 0])
-            cube([base_length, wall_thickness, wall_height]);
-    }
+module panel() {
+    cube([panel_width, panel_height, panel_thickness]);
 }
 
-module cable_slot(with_entry=true) {
+module cable_slot() {
     union() {
-        translate([0, -slot_depth, 0])
-            cube([slot_length, slot_depth, slot_width]);
+        translate([0, 0, 0])
+            circle(d = entry_diameter);
         
-        if (with_entry) {
-            translate([0, -slot_depth, 0])
-                cube([entry_length, slot_depth, entry_width]);
+        translate([0, -slot_width/2, 0])
+            square([slot_length, slot_width]);
+        
+        if (end_rounding) {
+            translate([slot_length, 0, 0])
+                circle(d = slot_width);
         }
     }
 }
 
-module cable_archive() {
+module cable_insert() {
     difference() {
-        l_shape();
+        panel();
         
-        for (i = [0:num_slots-1]) {
-            translate([i * slot_spacing + 10, base_width, base_height + 5])
-                rotate([90, 0, 0])
-                    cable_slot();
-        }
+        translate([margin_horizontal + entry_diameter/2, panel_height/2, -1])
+            linear_extrude(height = panel_thickness + 2)
+                cable_slot();
     }
 }
 
 // === RENDERIZADO ===
 
-cable_archive();
+cable_insert();
