@@ -1,0 +1,18 @@
+# OpenSCAD generated files
+*.stl
+*.off
+*.amf
+*.3mf
+*.dxf
+*.svg
+*.png
+*.gif
+
+# Editor backups
+*~
+*.bak
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
