@@ -5,22 +5,22 @@
 // === MAIN PARAMETERS ===
 
 /* [Panel Dimensions] */
-panel_width = 50;
-panel_height = 30;
+panel_width = 60;
+panel_height = 310;
 panel_thickness = 3;
 
 /* [Main Slot Configuration] */
 enable_main_slot = true;
 slot_width = 3;
-entry_diameter = 15;
+entry_diameter = 25;
 end_rounding = true;
-slot_margin_horizontal = 5;
-slot_margin_vertical = 5;
+slot_margin_horizontal = 10;
+slot_margin_vertical = 10;
 
 /* [Perpendicular Slots Configuration] */
 enable_perpendicular_slots = true;
-perpendicular_slot_spacing = 15;
-perpendicular_slot_end_radius = 2;
+perpendicular_slot_spacing = 25;
+perpendicular_slot_end_radius = 3;
 
 /* [Base Walls Configuration] */
 wall_height = 20;
@@ -35,25 +35,25 @@ cross_margin_top = 2;
 $fn = 50;
 
 // === CALCULATED VALUES (DO NOT EDIT) ===
-slot_length = panel_width - 2*slot_margin_horizontal - entry_diameter/2 - slot_width/2;
-cross_width_horizontal = panel_height - 2*cross_margin_height;
-cross_width_vertical = panel_width - 2*cross_margin_width;
+slot_length = panel_height - 2*slot_margin_horizontal - entry_diameter/2 - slot_width/2;
+cross_width_horizontal = panel_width - 2*cross_margin_height;
+cross_width_vertical = panel_height - 2*cross_margin_width;
 num_perpendicular_slots = floor(slot_length / perpendicular_slot_spacing);
 
 // === MODULES ===
 
 module panel() {
-    cube([panel_width, panel_height, panel_thickness]);
+    cube([panel_height, panel_width, panel_thickness]);
 }
 
 module walls() {
     difference() {
-        cube([panel_width, panel_height, wall_height]);
+        cube([panel_height, panel_width, wall_height]);
         
         translate([wall_thickness, wall_thickness, -1])
             cube([
-                panel_width - 2*wall_thickness, 
                 panel_height - 2*wall_thickness, 
+                panel_width - 2*wall_thickness, 
                 wall_height + 2
             ]);
     }
@@ -64,10 +64,10 @@ module cross_cutout() {
     
     union() {
         translate([-1, cross_margin_height, -1])
-            cube([panel_width + 2, cross_width_horizontal, cutout_height]);
+            cube([panel_height + 2, cross_width_horizontal, cutout_height]);
         
         translate([cross_margin_width, -1, -1])
-            cube([cross_width_vertical, panel_height + 2, cutout_height]);
+            cube([cross_width_vertical, panel_width + 2, cutout_height]);
     }
 }
 
@@ -93,8 +93,8 @@ module cable_slot() {
 }
 
 module perpendicular_slot_full() {
-    available_height_above = panel_height/2 - slot_margin_vertical;
-    available_height_below = panel_height/2 - slot_margin_vertical;
+    available_height_above = panel_width/2 - slot_margin_vertical;
+    available_height_below = panel_width/2 - slot_margin_vertical;
     total_length = available_height_above + available_height_below;
     
     union() {
@@ -128,7 +128,7 @@ module cable_insert() {
                 
                 translate([
                     slot_margin_horizontal + entry_diameter/2, 
-                    panel_height/2, 
+                    panel_width/2, 
                     -1
                 ])
                     linear_extrude(height = panel_thickness + 2) {
