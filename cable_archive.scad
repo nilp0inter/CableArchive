@@ -14,9 +14,15 @@ margin_horizontal = 5;
 margin_vertical = 5;
 
 // Parámetros de la ranura para cables (forma de chupa-chups)
+enable_main_slot = true;
 slot_width = 3;
 entry_diameter = 15;
 end_rounding = true;
+
+// Ranuras perpendiculares opcionales
+enable_perpendicular_slots = true;
+perpendicular_slot_spacing = 15;
+perpendicular_slot_end_radius = 2;
 
 // Parámetros de la base (paredes)
 wall_height = 20;
@@ -29,6 +35,7 @@ cross_margin_top = 2;
 slot_length = panel_width - 2*margin_horizontal - entry_diameter/2 - slot_width/2;
 cross_width_horizontal = panel_height - 2*cross_margin_height;
 cross_width_vertical = panel_width - 2*cross_margin_width;
+num_perpendicular_slots = floor(slot_length / perpendicular_slot_spacing);
 
 $fn = 50;      
 
@@ -81,6 +88,34 @@ module cable_slot() {
     }
 }
 
+module perpendicular_slot_full() {
+    available_height_above = panel_height/2 - margin_vertical;
+    available_height_below = panel_height/2 - margin_vertical;
+    total_length = available_height_above + available_height_below;
+    
+    union() {
+        translate([0, -available_height_below, 0])
+            circle(r = perpendicular_slot_end_radius);
+        
+        translate([-slot_width/2, -available_height_below, 0])
+            square([slot_width, total_length]);
+        
+        translate([0, available_height_above, 0])
+            circle(r = perpendicular_slot_end_radius);
+    }
+}
+
+module all_perpendicular_slots() {
+    if (enable_perpendicular_slots && num_perpendicular_slots > 0) {
+        for (i = [1:num_perpendicular_slots]) {
+            x_pos = i * perpendicular_slot_spacing;
+            
+            translate([x_pos, 0, 0])
+                perpendicular_slot_full();
+        }
+    }
+}
+
 module cable_insert() {
     union() {
         translate([0, 0, wall_height])
@@ -88,8 +123,12 @@ module cable_insert() {
                 panel();
                 
                 translate([margin_horizontal + entry_diameter/2, panel_height/2, -1])
-                    linear_extrude(height = panel_thickness + 2)
-                        cable_slot();
+                    linear_extrude(height = panel_thickness + 2) {
+                        if (enable_main_slot) {
+                            cable_slot();
+                        }
+                        all_perpendicular_slots();
+                    }
             }
         
         base();
