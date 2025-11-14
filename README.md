@@ -12,15 +12,15 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 
 - **Main cable slot**: Allows the cable to pass through while retaining the connectors
 - **Wide entry point**: Circular opening (25mm diameter) facilitates initial cable insertion
-- **Perpendicular slots**: Multiple cross-slots for securing cables at various points
+- **Per cable slots**: Multiple cross-slots for securing cables at various points
 - **Visible storage**: Both connectors remain visible simultaneously
 - **Easy extraction**: Simply pull the connectors to remove cables
 - **Modular design**: Multiple inserts can be stacked to cover entire drawers
 - **Cross-shaped cutout**: Base walls have cutouts for easy material access
-- **Optional fins**: Vertical separators between perpendicular slots for enhanced organization
+- **Optional cable separators**: Vertical separators between perpendicular slots for enhanced organization
 - **Optional bottom lid**: Base panel to fully enclose the organizer
 - **Optional stacking slab**: Additional slab below the bottom lid for improved stackability
-- **Optional top perimeter**: Raised edge around the top for better stacking alignment
+- **Optional stacking lip**: Raised edge around the top for better stacking alignment
 - **Fully parametric**: Customizable to your specific needs
 
 ## Design Components
@@ -28,16 +28,16 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ### Panel
 - Flat top panel with main cable slot
 - Default dimensions: 310mm × 60mm × 3mm (height × width × thickness)
-- Optional top perimeter for improved stacking
+- Optional stacking lip for improved stacking
 
 ### Base Walls
 - Vertical walls around the perimeter (default 20mm height, 2mm thickness)
 - Cross-shaped cutout pattern for material reduction
-- Optional fins for additional separation between slots
+- Optional cable separators for additional separation between slots
 - Optional bottom lid to enclose the organizer
 - Optional stacking slab below the bottom lid for improved stackability
 
-### Fins
+### Cable Separators
 - Optional vertical separators positioned between perpendicular slots
 - Configurable width and height percentage relative to wall height
 - Optional upward extension for additional separation
@@ -54,7 +54,7 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 - Optional rounded end for smooth cable routing
 - Customizable margins and positioning
 
-### Perpendicular Slots
+### Per Cable Slots
 - Multiple slots perpendicular to the main slot
 - Automatically calculated spacing (default 25mm)
 - Rounded ends (3mm radius) for gentle cable guidance
@@ -71,49 +71,48 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ## Customizable Parameters
 
 ### Top Panel
-- `panel_width`: Width of the panel (default: 60mm)
-- `panel_height`: Height/length of the panel (default: 310mm)
-- `panel_thickness`: Thickness of the top panel (default: 3mm)
+- `top_panel_width`: Width of the panel (default: 60mm)
+- `top_panel_height`: Height/length of the panel (default: 310mm)
+- `top_panel_thickness`: Thickness of the top panel (default: 3mm)
 
 ### Bottom Panel
-- `enable_bottom_lid`: Toggle bottom lid on/off (default: true)
+- `bottom_panel_enabled`: Toggle bottom panel on/off (default: true)
 
 ### Walls
-- `wall_height`: Height of perimeter walls (default: 20mm)
-- `wall_thickness`: Thickness of the walls (default: 2mm)
+- `walls_height`: Height of perimeter walls (default: 20mm)
+- `walls_thickness`: Thickness of the walls (default: 2mm)
 
 ### Stacking
-- `enable_stacking_slab`: Toggle stacking slab on/off (default: true, requires bottom lid enabled)
+- `stacking_slab_enabled`: Toggle stacking slab on/off (default: true, requires bottom lid enabled)
 - `stacking_slab_padding`: Padding around stacking slab (default: 5mm)
 - `stacking_slab_depth`: Thickness of stacking slab (default: 2mm)
-- `enable_top_perimeter`: Toggle top perimeter on/off (default: true)
-- `top_perimeter_height`: Height of top perimeter (default: 5mm)
-- `top_perimeter_padding`: Thickness of top perimeter walls (default: 2mm)
+- `stacking_lip_enabled`: Toggle top perimeter on/off (default: true)
+- `stacking_lip_height`: Height of top perimeter (default: 5mm)
+- `stacking_lip_padding`: Thickness of top perimeter walls (default: 2mm)
 
 ### Cross Cutout
-- `cross_margin_width`: Horizontal margin for cutout (default: 5mm)
-- `cross_margin_height`: Vertical margin for cutout (default: 5mm)
-- `cross_margin_top`: Top margin to preserve (default: 2mm)
+- `cross_cutout_margin_width`: Horizontal margin for cutout (default: 5mm)
+- `cross_cutout_margin_height`: Vertical margin for cutout (default: 5mm)
+- `cross_cutout_margin_top`: Top margin to preserve (default: 2mm)
 
 ### Main Slot
-- `enable_main_slot`: Toggle main cable slot on/off (default: true)
-- `slot_width`: Width of the cable channel (default: 3mm)
-- `entry_diameter`: Diameter of the entry hole (default: 25mm)
-- `end_rounding`: Round the slot end (default: true)
-- `slot_margin_horizontal`: Margin from panel edge (default: 10mm)
-- `slot_margin_vertical`: Vertical position margin (default: 10mm)
+- `main_slot_enabled`: Toggle main cable slot on/off (default: true)
+- `main_slot_width`: Width of the cable channel (default: 3mm)
+- `main_slot_entry_diameter`: Diameter of the entry hole (default: 25mm)
+- `main_slot_end_rounding`: Round the slot end (default: true)
+- `main_slot_margin`: Margin from panel edge (default: 10mm)
 
 ### Per Cable Slot
-- `enable_perpendicular_slots`: Toggle perpendicular slots on/off (default: true)
-- `perpendicular_slot_spacing`: Distance between slots (default: 25mm)
-- `perpendicular_slot_end_radius`: Radius of slot ends (default: 3mm)
-- `perpendicular_slot_margin`: Margin from panel edges (default: 5mm)
+- `per_cable_slots_enabled`: Toggle perpendicular slots on/off (default: true)
+- `per_cable_slot_spacing`: Distance between slots (default: 25mm)
+- `per_cable_slot_end_radius`: Radius of slot ends (default: 3mm)
+- `per_cable_slot_margin`: Margin from panel edges (default: 5mm)
 
 ### Cable Separators
-- `enable_fins`: Toggle fins on/off (default: true)
-- `fin_width`: Width of each fin (default: 2mm)
-- `fin_percentage`: Percentage of wall height fins occupy (default: 0.5)
-- `fin_extension`: Additional height to extend fins upwards (default: 0mm)
+- `cable_separators_enabled`: Toggle fins on/off (default: true)
+- `cable_separator_width`: Width of each fin (default: 2mm)
+- `cable_separator_percentage`: Percentage of wall height fins occupy (default: 0.5)
+- `cable_separator_extension`: Additional height to extend fins upwards (default: 0mm)
 
 ### Rendering
 - `$fn`: Circle resolution (default: 50)
