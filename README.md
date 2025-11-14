@@ -16,9 +16,10 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 - **Visible storage**: Both connectors remain visible simultaneously
 - **Easy extraction**: Simply pull the connectors to remove cables
 - **Modular design**: Multiple inserts can be stacked to cover entire drawers
-- **Cross-shaped cutout**: Base walls have cutouts for easy material access and stacking
+- **Cross-shaped cutout**: Base walls have cutouts for easy material access
 - **Optional fins**: Vertical separators between perpendicular slots for enhanced organization
 - **Optional bottom lid**: Base panel to fully enclose the organizer
+- **Optional stacking slab**: Additional slab below the bottom lid for improved stackability
 - **Fully parametric**: Customizable to your specific needs
 
 ## Design Components
@@ -29,9 +30,10 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 
 ### Base Walls
 - Vertical walls around the perimeter (default 20mm height, 2mm thickness)
-- Cross-shaped cutout pattern for material reduction and stackability
+- Cross-shaped cutout pattern for material reduction
 - Optional fins for additional separation between slots
 - Optional bottom lid to enclose the organizer
+- Optional stacking slab below the bottom lid for improved stackability
 
 ### Fins
 - Optional vertical separators positioned between perpendicular slots
@@ -88,6 +90,9 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 - `wall_height`: Height of perimeter walls (default: 20mm)
 - `wall_thickness`: Thickness of the walls (default: 2mm)
 - `enable_bottom_lid`: Toggle bottom lid on/off (default: true)
+- `enable_stacking_slab`: Toggle stacking slab on/off (default: true)
+- `stacking_slab_padding`: Padding around stacking slab (default: 5mm)
+- `stacking_slab_depth`: Thickness of stacking slab (default: 2mm)
 
 ### Fins Configuration
 - `enable_fins`: Toggle fins on/off (default: true)
