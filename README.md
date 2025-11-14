@@ -6,7 +6,7 @@ A parametric cable organizer designed in OpenSCAD for 3D printing.
 
 ## Description
 
-Cable Archive is a modular insert that can be installed in drawers or containers to organize all types of cables. The design consists of a flat panel with perimeter walls and specialized slots for cable management.
+Cable Archive is a modular insert that can be installed in drawers or containers to organize all types of cables. The design consists of a flat panel with perimeter walls and specialized slots for cable management. Optional fins provide additional separation between slots, and a bottom lid can enclose the organizer completely.
 
 ### Features
 
@@ -17,6 +17,8 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 - **Easy extraction**: Simply pull the connectors to remove cables
 - **Modular design**: Multiple inserts can be stacked to cover entire drawers
 - **Cross-shaped cutout**: Base walls have cutouts for easy material access and stacking
+- **Optional fins**: Vertical separators between perpendicular slots for enhanced organization
+- **Optional bottom lid**: Base panel to fully enclose the organizer
 - **Fully parametric**: Customizable to your specific needs
 
 ## Design Components
@@ -28,6 +30,18 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ### Base Walls
 - Vertical walls around the perimeter (default 20mm height, 2mm thickness)
 - Cross-shaped cutout pattern for material reduction and stackability
+- Optional fins for additional separation between slots
+- Optional bottom lid to enclose the organizer
+
+### Fins
+- Optional vertical separators positioned between perpendicular slots
+- Configurable width and height percentage relative to wall height
+- Cut by main slots and cross cutouts for integration
+
+### Bottom Lid
+- Optional base panel matching top panel dimensions
+- Provides complete enclosure when enabled
+- Positioned below the base walls
 
 ### Main Slot
 - Circular entry (25mm diameter) for easy cable insertion
@@ -73,6 +87,12 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ### Base Walls Configuration
 - `wall_height`: Height of perimeter walls (default: 20mm)
 - `wall_thickness`: Thickness of the walls (default: 2mm)
+- `enable_bottom_lid`: Toggle bottom lid on/off (default: true)
+
+### Fins Configuration
+- `enable_fins`: Toggle fins on/off (default: true)
+- `fin_width`: Width of each fin (default: 2mm)
+- `fin_percentage`: Percentage of wall height fins occupy (default: 0.5)
 
 ### Cross Cutout Configuration
 - `cross_margin_width`: Horizontal margin for cutout (default: 5mm)
