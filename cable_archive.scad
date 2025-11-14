@@ -28,6 +28,11 @@ wall_height = 20;
 wall_thickness = 2;
 enable_bottom_lid = true;
 
+/* [Stacking Configuration] */
+enable_stacking_slab = true;
+stacking_slab_padding = 5;
+stacking_slab_depth = 2;
+
 /* [Cross Cutout Configuration] */
 cross_margin_width = 5;
 cross_margin_height = 5;
@@ -102,6 +107,18 @@ module base() {
     }
 }
 
+module stacking_slab() {
+    if (enable_stacking_slab) {
+        assert(enable_bottom_lid, "Stacking slab requires bottom lid to be enabled");
+        translate([stacking_slab_padding, stacking_slab_padding, -panel_thickness - stacking_slab_depth])
+            cube([
+                panel_height - 2*stacking_slab_padding,
+                panel_width - 2*stacking_slab_padding,
+                stacking_slab_depth
+            ]);
+    }
+}
+
 module cable_slot() {
     union() {
         circle(d = entry_diameter);
@@ -171,6 +188,8 @@ module cable_insert() {
             translate([0, 0, -panel_thickness])
                 panel();
         }
+        
+        stacking_slab();
     }
 }
 

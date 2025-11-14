@@ -90,7 +90,9 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 - `wall_height`: Height of perimeter walls (default: 20mm)
 - `wall_thickness`: Thickness of the walls (default: 2mm)
 - `enable_bottom_lid`: Toggle bottom lid on/off (default: true)
-- `enable_stacking_slab`: Toggle stacking slab on/off (default: true)
+
+### Stacking Configuration
+- `enable_stacking_slab`: Toggle stacking slab on/off (default: true, requires bottom lid enabled)
 - `stacking_slab_padding`: Padding around stacking slab (default: 5mm)
 - `stacking_slab_depth`: Thickness of stacking slab (default: 2mm)
 
