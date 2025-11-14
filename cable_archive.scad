@@ -4,31 +4,19 @@
 
 // === MAIN PARAMETERS ===
 
-/* [Panel Dimensions] */
+/* [Top Panel] */
 panel_width = 60;
 panel_height = 310;
 panel_thickness = 3;
 
-/* [Main Slot Configuration] */
-enable_main_slot = true;
-slot_width = 3;
-entry_diameter = 25;
-end_rounding = true;
-slot_margin_horizontal = 10;
-slot_margin_vertical = 10;
-
-/* [Perpendicular Slots Configuration] */
-enable_perpendicular_slots = true;
-perpendicular_slot_spacing = 25;
-perpendicular_slot_end_radius = 3;
-perpendicular_slot_margin = 5;
-
-/* [Base Walls Configuration] */
-wall_height = 20;
-wall_thickness = 2;
+/* [Bottom Panel] */
 enable_bottom_lid = true;
 
-/* [Stacking Configuration] */
+/* [Walls] */
+wall_height = 20;
+wall_thickness = 2;
+
+/* [Stacking] */
 enable_stacking_slab = true;
 stacking_slab_padding = 5;
 stacking_slab_depth = 2;
@@ -36,18 +24,32 @@ enable_top_perimeter = true;
 top_perimeter_height = 5;
 top_perimeter_padding = 2;
 
-/* [Cross Cutout Configuration] */
+/* [Cross Cutout] */
 cross_margin_width = 5;
 cross_margin_height = 5;
 cross_margin_top = 2;
 
-/* [Fins Configuration] */
+/* [Main Slot] */
+enable_main_slot = true;
+slot_width = 3;
+entry_diameter = 25;
+end_rounding = true;
+slot_margin_horizontal = 10;
+slot_margin_vertical = 10;
+
+/* [Per Cable Slot] */
+enable_perpendicular_slots = true;
+perpendicular_slot_spacing = 25;
+perpendicular_slot_end_radius = 3;
+perpendicular_slot_margin = 5;
+
+/* [Cable Separators] */
 enable_fins = true;
 fin_width = 2;
 fin_percentage = 0.5;
 fin_extension = 0;
 
-/* [Rendering Quality] */
+/* [Rendering] */
 $fn = 50;
 
 // === CALCULATED VALUES (DO NOT EDIT) ===
