@@ -32,6 +32,9 @@ enable_bottom_lid = true;
 enable_stacking_slab = true;
 stacking_slab_padding = 5;
 stacking_slab_depth = 2;
+enable_top_perimeter = true;
+top_perimeter_height = 5;
+top_perimeter_padding = 2;
 
 /* [Cross Cutout Configuration] */
 cross_margin_width = 5;
@@ -42,6 +45,7 @@ cross_margin_top = 2;
 enable_fins = true;
 fin_width = 2;
 fin_percentage = 0.5;
+fin_extension = 0;
 
 /* [Rendering Quality] */
 $fn = 50;
@@ -75,12 +79,13 @@ module walls() {
 module fins() {
     if (enable_fins && enable_perpendicular_slots && num_perpendicular_slots > 1) {
         fin_height = wall_height * fin_percentage;
+        fin_total_height = fin_height + fin_extension;
         
         for (i = [0:num_perpendicular_slots-2]) {
             x_pos = slot_margin_horizontal + entry_diameter/2 + slot_length - i * perpendicular_slot_spacing - perpendicular_slot_spacing/2;
             
             translate([x_pos - fin_width/2, wall_thickness, wall_height - fin_height])
-                cube([fin_width, panel_width - 2*wall_thickness, fin_height]);
+                cube([fin_width, panel_width - 2*wall_thickness, fin_height + panel_thickness + fin_extension]);
         }
     }
 }
@@ -116,6 +121,23 @@ module stacking_slab() {
                 panel_width - 2*stacking_slab_padding,
                 stacking_slab_depth
             ]);
+    }
+}
+
+module top_perimeter() {
+    if (enable_top_perimeter) {
+        translate([0, 0, wall_height + panel_thickness]) {
+            difference() {
+                cube([panel_height, panel_width, top_perimeter_height]);
+                
+                translate([top_perimeter_padding, top_perimeter_padding, -1])
+                    cube([
+                        panel_height - 2*top_perimeter_padding,
+                        panel_width - 2*top_perimeter_padding,
+                        top_perimeter_height + 2
+                    ]);
+            }
+        }
     }
 }
 
@@ -183,6 +205,8 @@ module cable_insert() {
                     all_perpendicular_slots();
                 }
         }
+        
+        top_perimeter();
         
         if (enable_bottom_lid) {
             translate([0, 0, -panel_thickness])

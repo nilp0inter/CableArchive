@@ -20,6 +20,7 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 - **Optional fins**: Vertical separators between perpendicular slots for enhanced organization
 - **Optional bottom lid**: Base panel to fully enclose the organizer
 - **Optional stacking slab**: Additional slab below the bottom lid for improved stackability
+- **Optional top perimeter**: Raised edge around the top for better stacking alignment
 - **Fully parametric**: Customizable to your specific needs
 
 ## Design Components
@@ -27,6 +28,7 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ### Panel
 - Flat top panel with main cable slot
 - Default dimensions: 310mm × 60mm × 3mm (height × width × thickness)
+- Optional top perimeter for improved stacking
 
 ### Base Walls
 - Vertical walls around the perimeter (default 20mm height, 2mm thickness)
@@ -38,6 +40,7 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ### Fins
 - Optional vertical separators positioned between perpendicular slots
 - Configurable width and height percentage relative to wall height
+- Optional upward extension for additional separation
 - Cut by main slots and cross cutouts for integration
 
 ### Bottom Lid
@@ -95,11 +98,15 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 - `enable_stacking_slab`: Toggle stacking slab on/off (default: true, requires bottom lid enabled)
 - `stacking_slab_padding`: Padding around stacking slab (default: 5mm)
 - `stacking_slab_depth`: Thickness of stacking slab (default: 2mm)
+- `enable_top_perimeter`: Toggle top perimeter on/off (default: true)
+- `top_perimeter_height`: Height of top perimeter (default: 5mm)
+- `top_perimeter_padding`: Thickness of top perimeter walls (default: 2mm)
 
 ### Fins Configuration
 - `enable_fins`: Toggle fins on/off (default: true)
 - `fin_width`: Width of each fin (default: 2mm)
 - `fin_percentage`: Percentage of wall height fins occupy (default: 0.5)
+- `fin_extension`: Additional height to extend fins upwards (default: 0mm)
 
 ### Cross Cutout Configuration
 - `cross_margin_width`: Horizontal margin for cutout (default: 5mm)
