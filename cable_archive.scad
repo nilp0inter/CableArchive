@@ -32,15 +32,17 @@ cross_cutout_margin_top = 2;
 /* [Main Slot] */
 main_slot_enabled = true;
 main_slot_width = 3;
-main_slot_entry_diameter = 25;
-main_slot_end_rounding = true;
+main_slot_primary_entry_diameter = 0;
+main_slot_secondary_entry_diameter = 0;
 main_slot_margin = 10;
 
 /* [Per Cable Slot] */
 per_cable_slots_enabled = true;
 per_cable_slot_spacing = 25;
+per_cable_slot_width = 3;
 per_cable_slot_end_radius = 3;
 per_cable_slot_margin = 5;
+per_cable_slot_ends_minimum_margin = 10;
 
 /* [Cable Separators] */
 cable_separators_enabled = true;
@@ -52,11 +54,12 @@ cable_separator_extension = 0;
 $fn = 50;
 
 // === CALCULATED VALUES (DO NOT EDIT) ===
-slot_length = top_panel_height - 2*main_slot_margin - main_slot_entry_diameter/2 - main_slot_width/2;
+slot_length = top_panel_height - 2*main_slot_margin - main_slot_primary_entry_diameter/2 - main_slot_secondary_entry_diameter/2;
 cross_cutout_width_horizontal = cross_cutout_margin_height;
 cross_cutout_width_vertical = cross_cutout_margin_width;
-available_space_for_per_cable = slot_length - (main_slot_entry_diameter/2 + per_cable_slot_spacing/2);
-num_per_cable_slots = floor(available_space_for_per_cable / per_cable_slot_spacing) + 1;
+num_per_cable_slots = floor((slot_length - 2*per_cable_slot_ends_minimum_margin) / per_cable_slot_spacing) + 1;
+offset = (slot_length - (num_per_cable_slots - 1) * per_cable_slot_spacing) / 2;
+effective_offset = max(per_cable_slot_ends_minimum_margin, offset);
 
 // === MODULES ===
 
@@ -82,11 +85,13 @@ module cable_separators() {
         cable_separator_height = walls_height * cable_separator_percentage;
         cable_separator_total_height = cable_separator_height + cable_separator_extension;
         
+        translate([main_slot_margin + main_slot_primary_entry_diameter/2, 0, 0]) {
         for (i = [0:num_per_cable_slots-2]) {
-            x_pos = main_slot_margin + main_slot_entry_diameter/2 + slot_length - i * per_cable_slot_spacing - per_cable_slot_spacing/2;
+            x_pos = effective_offset + per_cable_slot_spacing * (i + 0.5);
             
             translate([x_pos - cable_separator_width/2, walls_thickness, walls_height - cable_separator_height])
                 cube([cable_separator_width, top_panel_width - 2*walls_thickness, cable_separator_height + top_panel_thickness + cable_separator_extension]);
+        }
         }
     }
 }
@@ -144,15 +149,13 @@ module stacking_lip() {
 
 module cable_slot() {
     union() {
-        circle(d = main_slot_entry_diameter);
+        circle(d = main_slot_primary_entry_diameter);
         
         translate([0, -main_slot_width/2, 0])
             square([slot_length, main_slot_width]);
         
-        if (main_slot_end_rounding) {
-            translate([slot_length, 0, 0])
-                circle(d = main_slot_width);
-        }
+        translate([slot_length, 0, 0])
+            circle(d = main_slot_secondary_entry_diameter);
     }
 }
 
@@ -165,8 +168,8 @@ module per_cable_slot_full() {
         translate([0, -available_height_below, 0])
             circle(r = per_cable_slot_end_radius);
         
-        translate([-main_slot_width/2, -available_height_below, 0])
-            square([main_slot_width, total_length]);
+        translate([-per_cable_slot_width/2, -available_height_below, 0])
+            square([per_cable_slot_width, total_length]);
         
         translate([0, available_height_above, 0])
             circle(r = per_cable_slot_end_radius);
@@ -176,7 +179,7 @@ module per_cable_slot_full() {
 module all_per_cable_slots() {
     if (per_cable_slots_enabled && num_per_cable_slots > 0) {
         for (i = [0:num_per_cable_slots-1]) {
-            x_pos = slot_length - i * per_cable_slot_spacing;
+            x_pos = effective_offset + per_cable_slot_spacing * i;
             
             translate([x_pos, 0, 0])
                 per_cable_slot_full();
@@ -195,7 +198,7 @@ module cable_insert() {
             }
             
             translate([
-                main_slot_margin + main_slot_entry_diameter/2, 
+                main_slot_margin + main_slot_primary_entry_diameter/2, 
                 top_panel_width/2, 
                 -1
             ])

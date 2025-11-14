@@ -11,7 +11,7 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ### Features
 
 - **Main cable slot**: Allows the cable to pass through while retaining the connectors
-- **Wide entry point**: Circular opening (25mm diameter) facilitates initial cable insertion
+- **Optional entry points**: Circular openings at both ends facilitate cable insertion
 - **Per cable slots**: Multiple cross-slots for securing cables at various points
 - **Visible storage**: Both connectors remain visible simultaneously
 - **Easy extraction**: Simply pull the connectors to remove cables
@@ -98,15 +98,17 @@ Cable Archive is a modular insert that can be installed in drawers or containers
 ### Main Slot
 - `main_slot_enabled`: Toggle main cable slot on/off (default: true)
 - `main_slot_width`: Width of the cable channel (default: 3mm)
-- `main_slot_entry_diameter`: Diameter of the entry hole (default: 25mm)
-- `main_slot_end_rounding`: Round the slot end (default: true)
+- `main_slot_primary_entry_diameter`: Diameter of the primary entry hole (default: 0mm)
+- `main_slot_secondary_entry_diameter`: Diameter of the secondary entry hole (default: 0mm)
 - `main_slot_margin`: Margin from panel edge (default: 10mm)
 
 ### Per Cable Slot
 - `per_cable_slots_enabled`: Toggle perpendicular slots on/off (default: true)
 - `per_cable_slot_spacing`: Distance between slots (default: 25mm)
+- `per_cable_slot_width`: Width of the perpendicular slots (default: 3mm)
 - `per_cable_slot_end_radius`: Radius of slot ends (default: 3mm)
 - `per_cable_slot_margin`: Margin from panel edges (default: 5mm)
+- `per_cable_slot_ends_minimum_margin`: Minimum margin from main slot ends (default: 10mm)
 
 ### Cable Separators
 - `cable_separators_enabled`: Toggle fins on/off (default: true)
